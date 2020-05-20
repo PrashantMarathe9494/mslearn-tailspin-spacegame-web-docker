@@ -3,8 +3,9 @@ trigger:
 
 variables:
   buildConfiguration: 'Release'
-   webRepository: 'web'
   tag: '$(Build.BuildId)'
+  webRepository: 'web'
+  
 
 stages:
 - stage: 'Build'
@@ -25,7 +26,9 @@ stages:
         containerRegistry: 'Container Registry Connection'
         tags: |
           $(tag)
-          
+   
+
+
 - stage: 'Deploy'
   displayName: 'Deploy the container'
   dependsOn: Build
